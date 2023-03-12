@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { Home } from './Components/Home';
 import { PopularMovies } from './Components/PopularMovies';
 import { UpcomingMovies } from './Components/UpcomingMovies';
+import { SearchMovies } from './Components/SearchMovie';
 
 
 
@@ -14,6 +15,7 @@ export const App = () => {
         <Route path="/" element={<Home />}/>
         <Route path="/populares" element={<PopularMovies title="Populares" url="popular"/>}/>
         <Route path="/lanzamientos" element={<UpcomingMovies title="Proximos Lanzamientos" url="upcoming" />}/>
+        <Route path="/buscador/:query" element={<SearchMovies />}/>
       
     </Routes>
 </BrowserRouter>
