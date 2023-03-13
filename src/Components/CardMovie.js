@@ -18,13 +18,13 @@ const CardMovie = ({id, title, poster_path}) => {
                     image={`https://image.tmdb.org/t/p/w200/${poster_path}`}
                 />
                 <CardContent>
-                    <Link to={`/detalle/${id}`}></Link>
+                    {/* <Link to={`/detalle/${id}`}></Link> */}
                     <Typography variant="subtitle2: 'h2'" component="h3">
                     {title}
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button variant="contained" size="large" color="secondary">Detalles</Button>
+                <Link to={`/detalle/${id}`}> <Button variant="contained" size="large" color="secondary">Detalles</Button></Link>
                 </CardActions>
                 </Card>
 
