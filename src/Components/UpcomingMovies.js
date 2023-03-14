@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { Navbar } from "./Navbar"
+import { Footer } from "./Footer"
 
 export const UpcomingMovies = ({title, url }) => {
   
@@ -43,6 +44,7 @@ export const UpcomingMovies = ({title, url }) => {
                      <p>{count}</p>
                     <button onClick={handleClickPrev}>atras</button>
                 </div>
+                <Footer />
             </div>
      )
 }

@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { Navbar } from "./Navbar"
+import { Footer } from "./Footer"
 
 export const SearchMovie = () => {
     
@@ -25,6 +26,7 @@ export const SearchMovie = () => {
                     <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt="poster" />
                     </div>
                 ))}
+                <Footer />
         </div>
     )
 }

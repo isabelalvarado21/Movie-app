@@ -1,4 +1,5 @@
 import './App.css';
+import { ChakraProvider } from '@chakra-ui/react'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { Home } from './Components/Home';
 import { PopularMovies } from './Components/PopularMovies';
@@ -11,7 +12,7 @@ import { Error } from './Components/Error';
 
 export const App = () => {
   return (
-
+    <ChakraProvider>
    <BrowserRouter>
     <Routes>
         <Route path="/" element={<Home />}/>
@@ -24,6 +25,7 @@ export const App = () => {
       
     </Routes>
 </BrowserRouter>
+</ChakraProvider>
   );
 }
 
