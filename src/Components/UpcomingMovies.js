@@ -1,3 +1,5 @@
+import { Box, VStack, HStack, Container, IconButton, Text} from '@chakra-ui/react'
+import {ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { Navbar } from "./Navbar"
@@ -40,9 +42,28 @@ export const UpcomingMovies = ({title, url }) => {
                             </div>
                         ))}
               
-                    <button onClick={handleClickNext}>siguente</button>
-                     <p>{count}</p>
-                    <button onClick={handleClickPrev}>atras</button>
+                <Box bg='lightblue' w='100%' p={4}> 
+                    <VStack>
+                    <Container centerContent={true}>
+                    <HStack>
+                    <IconButton
+                        colorScheme='teal'
+                        icon={<ArrowLeftIcon />}
+                        onClick={handleClickPrev}
+                        />
+                    <Text fontSize='md' fontWeight='bold'>
+                        {count}
+                    </Text>
+                    <IconButton
+                        colorScheme='teal'
+                        icon={<ArrowRightIcon />}
+                        onClick={handleClickNext}
+                        /> 
+                    </HStack>
+                    </Container>
+                    </VStack>
+                </Box>
+                
                 </div>
                 <Footer />
             </div>
