@@ -1,6 +1,6 @@
-import { useState, useEffect} from "react"
-import CardMovie from "./CardMovie"
 import { Wrap, WrapItem, Container, Text } from '@chakra-ui/react'
+import { useState, useEffect} from "react"
+import { CardMovie } from "./CardMovie"
 
 export const MoviesHome = ({ title, url }) => {
 

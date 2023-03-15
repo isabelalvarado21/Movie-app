@@ -1,9 +1,10 @@
-import { Box, VStack, HStack, Container, IconButton, Text} from '@chakra-ui/react'
+import { Box, VStack, HStack, Container, IconButton, Text, Wrap, WrapItem} from '@chakra-ui/react'
 import {ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { Navbar } from "./Navbar"
 import { Footer } from "./Footer"
+import { CardMovie } from "./CardMovie"
 
 export const UpcomingMovies = ({title, url }) => {
   
@@ -29,18 +30,22 @@ export const UpcomingMovies = ({title, url }) => {
         return(
 
             <div>
-                <Navbar />
+            <Navbar />
                 <div>
-                    <h2>{title}</h2>
+                <Container maxW='80%' py='50px'>
+                <Text fontSize='4xl' fontWeight='600' as='h2'>{title}</Text>
+                    <Wrap spacing='30px' mt='5'>
                         {movies?.map(movie =>(
-                            <div key={`key-${movie.id}`}>
-                            <Link to={`/detalle/${movie.id}`}>
-                                 <button >Detalle</button>
-                            </Link>
-                            <p>{movie.title}</p>
-                            <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt="poster" />
-                            </div>
-                        ))}
+                            <WrapItem>
+                                <CardMovie 
+                                id={movie.id}
+                                title={movie.title}
+                                poster_path={movie.poster_path}
+                                />
+                            </WrapItem>
+                    ))}
+                    </Wrap>
+                </Container>
               
                 <Box bg='lightblue' w='100%' p={4}> 
                     <VStack>

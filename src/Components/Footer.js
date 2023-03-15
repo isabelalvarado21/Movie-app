@@ -1,5 +1,5 @@
 import { Box, Container, VStack, HStack, IconButton } from '@chakra-ui/react'
-import {EmailIcon, InfoIcon } from '@chakra-ui/icons'
+import { EmailIcon, InfoIcon } from '@chakra-ui/icons'
 
 export const Footer = () => {
     
@@ -20,10 +20,8 @@ export const Footer = () => {
                         icon={<InfoIcon />}
                         />
                     </HStack>
-                </Container>
-    
-            </VStack>
-            
+                </Container>    
+            </VStack>            
         </Box>
     )
 }
