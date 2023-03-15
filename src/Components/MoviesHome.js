@@ -1,6 +1,7 @@
 
-import { Link } from "react-router-dom"
 import { useState, useEffect} from "react"
+// import { Link } from "react-router-dom"
+import CardMovie from "./CardMovie"
 
 export const MoviesHome = ({ title, url }) => {
 
@@ -17,13 +18,11 @@ export const MoviesHome = ({ title, url }) => {
         <div>
             <h2>{title}</h2>
                 {movies?.map(movie =>(
-                    <div key={`key-${movie.id}`}>
-                    <Link to={`/detalle/${movie.id}`}>
-                        <button >ver detalle</button>
-                    </Link>
-                    <p >{movie.title}</p>
-                    <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt="poster" />
-                    </div>
+                    <CardMovie 
+                        id={movie.id}
+                        title={movie.title}
+                        poster_path={movie.poster_path}
+                    />
                 ))}
         </div>
     
