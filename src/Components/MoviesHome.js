@@ -1,7 +1,6 @@
-
 import { useState, useEffect} from "react"
-// import { Link } from "react-router-dom"
 import CardMovie from "./CardMovie"
+import { Wrap, WrapItem, Container, Text } from '@chakra-ui/react'
 
 export const MoviesHome = ({ title, url }) => {
 
@@ -15,16 +14,19 @@ export const MoviesHome = ({ title, url }) => {
     }, [url])
    
     return(
-        <div>
-            <h2>{title}</h2>
+        <Container maxW='80%' py='50px'>
+            <Text fontSize='4xl' fontWeight='600' as='h2'>{title}</Text>
+            <Wrap spacing='30px' mt='5'>
                 {movies?.map(movie =>(
-                    <CardMovie 
+                    <WrapItem>
+                        <CardMovie 
                         id={movie.id}
                         title={movie.title}
                         poster_path={movie.poster_path}
-                    />
+                        />
+                    </WrapItem>
                 ))}
-        </div>
-    
+            </Wrap>
+        </Container>
     )
 }
