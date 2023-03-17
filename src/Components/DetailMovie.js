@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom"
+import { Card, Image, Container, Text, HStack, Stack, CardBody, Heading, CardFooter, Button, Link, Flex } from '@chakra-ui/react'
 import { useState,useEffect } from "react"
 
 export const DetailMovie = () => {
@@ -19,17 +20,60 @@ export const DetailMovie = () => {
         .then(data => setTrailer(data.results[0]))
     }, [params.id])
 
+    const url = `https://image.tmdb.org/t/p/w200/${movie.backdrop_path}`
+    const link = `https://www.youtube.com/watch?v=${trailer.key}`
+console.log(movie);
     return(
         
-        <div>
-           
-            <h1>{movie.title}</h1>
-            <p>Descripcion: {movie.overview}</p>
-            {movie?.genres?.map((genre) => (
-                      <p>{genre.name}</p>
-                    ))}
-            <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt="poster" />
-            <button><a href={`https://www.youtube.com/watch?v=${trailer.key}`}>trailer</a></button>
-        </div>
+        <Container maxW='80%' py='70px' bgImage={url} bgRepeat='no-repeat' bgSize="cover" >
+            <Flex align="center" justify="center">
+            <Card
+                direction={{ base: 'column', sm: 'row' }}
+                overflow='hidden'
+                variant='outline'
+                bg='rgba(0,0,18,0.8)'
+                color='white'
+                w='80%'
+                >
+                    <Image
+                        objectFit='cover'
+                        maxW={{ base: '100%', sm: '200px' }}
+                        src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
+                        alt={movie.title}
+                    />
+
+                    <Stack>
+                        <CardBody>
+                            <Heading fontSize='2.2rem' mb='4'>{movie.title}</Heading>
+
+                            <Text py='2' fontSize='1.5rem' as='h2'>
+                                Descripcion: 
+                            </Text>
+                            <Text py='2' fontSize='1rem' as='p'>
+                                {movie.overview}
+                            </Text>
+                            <Text py='2' fontSize='1.5rem' as='h2'>
+                                Categorias: 
+                            </Text>
+                            <HStack spacing='24px'>
+                                {movie?.genres?.map((genre) => (
+                                    <Text py='2' px='3' as='span' display='inline-block' fontSize='1rem' bg='rgba(0,0,86,0.68)'>{genre.name}</Text>
+                                ))}
+                            </HStack>
+                        </CardBody>
+
+                        <CardFooter>
+                            <Link href={link} w='100%' bg='red'>
+                                <Button variant='solid' w='100%' bg='#000012' border='none' borderRadius='none'   _hover={{
+    background: "rgba(0,0,65,0.68)", color: "white",
+  }}>
+                                    Trailer
+                                </Button>
+                            </Link>
+                        </CardFooter>
+                    </Stack>
+                </Card>
+                </Flex>
+        </Container>
     )
 }
