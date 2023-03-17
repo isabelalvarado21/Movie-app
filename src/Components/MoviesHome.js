@@ -18,7 +18,7 @@ export const MoviesHome = ({ title, url }) => {
             <Text fontSize='4xl' fontWeight='600' as='h2'>{title}</Text>
             <Wrap spacing='30px' mt='5'>
                 {movies?.map(movie =>(
-                    <WrapItem>
+                    <WrapItem key={`key-${movie.id}`}>
                         <CardMovie 
                         id={movie.id}
                         title={movie.title}
