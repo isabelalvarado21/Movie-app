@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom"
 import { Card, Image, Container, Text, HStack, Stack, CardBody, Heading, CardFooter, Button, Link, Flex } from '@chakra-ui/react'
 import { useState,useEffect } from "react"
+import { Navbar } from "./Navbar"
+import { Footer } from "./Footer"
 
 export const DetailMovie = () => {
 
@@ -20,14 +22,15 @@ export const DetailMovie = () => {
         .then(data => setTrailer(data.results[0]))
     }, [params.id])
 
-    const url = `https://image.tmdb.org/t/p/w200/${movie.backdrop_path}`
+    const url = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`
     const link = `https://www.youtube.com/watch?v=${trailer.key}`
-console.log(movie);
+
     return(
-        
-        <Container maxW='80%' py='70px' bgImage={url} bgRepeat='no-repeat' bgSize="cover" >
-            <Flex align="center" justify="center">
-            <Card
+        <>
+        <Navbar /> 
+        <Container maxW='80%' py='70px' bgImage={url} bgRepeat='no-repeat' bgSize="cover"  >
+            <Flex align="center" justify="center" >
+            <Card 
                 direction={{ base: 'column', sm: 'row' }}
                 overflow='hidden'
                 variant='outline'
@@ -35,15 +38,15 @@ console.log(movie);
                 color='white'
                 w='80%'
                 >
-                    <Image
+                    <Image 
                         objectFit='cover'
                         maxW={{ base: '100%', sm: '200px' }}
-                        src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
+                        src={`https://image.tmdb.org/t/p/w400/${movie.poster_path}`}
                         alt={movie.title}
                     />
 
-                    <Stack>
-                        <CardBody>
+                    <Stack >
+                        <CardBody >
                             <Heading fontSize='2.2rem' mb='4'>{movie.title}</Heading>
 
                             <Text py='2' fontSize='1.5rem' as='h2'>
@@ -62,11 +65,11 @@ console.log(movie);
                             </HStack>
                         </CardBody>
 
-                        <CardFooter>
+                        <CardFooter key={`key-${movie.id}`}>
                             <Link href={link} w='100%' bg='red'>
                                 <Button variant='solid' w='100%' bg='#000012' border='none' borderRadius='none'   _hover={{
-    background: "rgba(0,0,65,0.68)", color: "white",
-  }}>
+        background: "rgba(0,0,65,0.68)", color: "white",
+        }}>
                                     Trailer
                                 </Button>
                             </Link>
@@ -75,5 +78,8 @@ console.log(movie);
                 </Card>
                 </Flex>
         </Container>
+        <Footer />
+        </>
     )
+   
 }

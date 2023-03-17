@@ -1,20 +1,48 @@
 import { Wrap, WrapItem, Container} from '@chakra-ui/react'
+import { Box, VStack, HStack, IconButton, Text} from '@chakra-ui/react'
+import {ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
 import {  useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { Navbar } from "./Navbar"
 import { Footer } from "./Footer"
 import { CardMovie } from "./CardMovie"
 
+const useCount = () => {
+    const [count, setCount] = useState(1)
+    const [page, setPage] =useState()
+
+    const handleClickNext = () => {    
+        if (count < page) {
+        setCount(count + 1)}
+    }
+
+    const handleClickPrev = () => {
+        if (count > 1) {
+        setCount(count - 1)};
+    }
+  return {
+  count,
+  page, 
+  handleClickNext,
+  handleClickPrev,
+  setPage,
+  }
+}
+
 export const SearchMovie = () => {
     
     const params = useParams()
     const [movies, setMovies] = useState([])
+    const { count, setPage, handleClickNext, handleClickPrev} = useCount()
 
     useEffect(()=>{
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=7c1a3b7f576f57154e113773e6308ceb&query=${params.query}`)
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=7c1a3b7f576f57154e113773e6308ceb&query=${params.query}&page=${count}`)
         .then(res=> res.json())
-        .then(data => setMovies(data.results))
-    }, [params.query])
+        .then(data => { 
+            setMovies(data.results)
+            setPage(data.total_pages)
+        })
+    }, [params.query, count, setPage])
 
     return(
         <div >
@@ -23,7 +51,7 @@ export const SearchMovie = () => {
             <Container maxW='80%' py='50px'>
             <Wrap spacing='30px' mt='5'>
                 {movies?.map(movie =>(
-                    <WrapItem>
+                    <WrapItem key={`key-${movie.id}`}>
                         <CardMovie 
                         id={movie.id}
                         title={movie.title}
@@ -33,6 +61,29 @@ export const SearchMovie = () => {
                 ))}
             </Wrap>
             </Container>
+             
+            <Box bg='lightblue' w='100%' p={4}> 
+                    <VStack>
+                    <Container centerContent={true}>
+                    <HStack>
+                    <IconButton
+                        colorScheme='teal'
+                        icon={<ArrowLeftIcon />}
+                        onClick={handleClickPrev}
+                        />
+                    <Text fontSize='md' fontWeight='bold'>
+                        {count}
+                    </Text>
+                    <IconButton
+                        colorScheme='teal'
+                        icon={<ArrowRightIcon />}
+                        onClick={handleClickNext}
+
+                        /> 
+                    </HStack>
+                    </Container>
+                    </VStack>
+                </Box>
             <Footer />
         </div>
     )
