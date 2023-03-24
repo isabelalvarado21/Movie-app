@@ -1,5 +1,4 @@
 import { Card, Image, Link, Heading, CardBody, CardFooter, Button } from '@chakra-ui/react'
-import { Box } from '@chakra-ui/react'
 
 export const CardMovie = ({id, title, poster_path}) => {
 
