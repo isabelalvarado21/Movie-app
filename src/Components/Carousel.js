@@ -1,10 +1,15 @@
 import { useState, useEffect} from "react"
-import { Box } from "@chakra-ui/react"
+import { Box, Link } from "@chakra-ui/react"
 import Flickity from 'react-flickity-component'
+
+import '../../node_modules/flickity/css/flickity.css'
 import '../styles/Carousel.css'
+
 const flickityOptions = {
-    autoPlay: 1500,
-    wrapAround: true
+    autoPlay: 5000,
+    wrapAround: true,
+    pageDots: true,
+    prevNextButtons: true
 }
 
 export const Carousel = () => {
@@ -28,13 +33,17 @@ export const Carousel = () => {
       disableImagesLoaded={false} // default false
       reloadOnUpdate // default false
       static // default false
-      
     >
-        {cineMovies?.slice(0,5).map(movie =>(
-            <Box className='carousel-cell' key={movie.id} h='800px' bgImage={`"https://image.tmdb.org/t/p/original/${movie.backdrop_path}"`} bgRepeat='no-repeat'>
-            </Box>      
+        {cineMovies?.slice(0,7).map(movie =>(
+          <Link href={`/detalle/${movie.id}`} w='100%' bg='red' key={movie.id}>
+              <Box className='carousel-cell'  h='700px' bgImage={`"https://image.tmdb.org/t/p/original/${movie.backdrop_path}"`} bgRepeat='no-repeat'>
+              <Box w='100%' pt='10' pb='20' className="info">
+                <h1 fontSize='4xl'>{movie.title}</h1>
+                <p>{movie.overview}</p>
+              </Box>
+            </Box>    
+          </Link>         
         ))}
-      
     </Flickity>
   )
 }

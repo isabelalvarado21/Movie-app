@@ -1,8 +1,3 @@
-.carousel {
-    overflow: hidden;
-    height: auto;
-}
-
 .carousel-cell {
     width: 100%;
     height: 200px;
@@ -10,27 +5,56 @@
     border-radius: 5px;
     counter-increment: gallery-cell;
     background-size:cover;
-    background-position: center center;
+    background-position: top center;
     background-repeat: no-repeat;
 }
 
 /* cell number */
 .carousel-cell:before {
-    display: block;
-    text-align: center;
-    content: counter(gallery-cell);
-    line-height: 200px;
-    font-size: 80px;
-    color: white;
+    display: none;    
+}
+
+.flickity-button {
+    background: hsla(240, 10.1%, 57.3%, 0.75);
+    color: #d2d2d2;
 }
 
 .flickity-page-dots {
     position: absolute;
     width: 100%;
-    bottom: -25px;
+    bottom: 30px;
     padding: 0;
     margin: 0;
     list-style: none;
     text-align: center;
     line-height: 1;
+}
+
+.flickity-page-dots .dot {
+    background: #bbbbbb;
+}
+
+.info {
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info h1, .info p {
+    color: #fff;
+}
+
+.info h1 {
+    font-size:2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.info p{
+    width: 80%;
+    text-align: center;
+    font-size: 1.2rem;
 }
