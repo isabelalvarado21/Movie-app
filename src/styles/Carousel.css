@@ -1,8 +1,11 @@
+.carousel .css-1wk5yxx {
+    background: none;
+}
+
 .carousel-cell {
     width: 100%;
     height: 200px;
     margin-right: 10px;
-    border-radius: 5px;
     counter-increment: gallery-cell;
     background-size:cover;
     background-position: top center;
