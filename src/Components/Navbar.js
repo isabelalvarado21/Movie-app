@@ -1,4 +1,4 @@
-import { Box, Stack, Button, Input, Image } from '@chakra-ui/react'
+import { Box, Button, Input, Image } from '@chakra-ui/react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
@@ -30,26 +30,25 @@ export const Navbar = () => {
     }
    
     return(
-
         <Box w='100%' p={4} bg='#030015' id='navbar'>
             <Box display="flex" alignItems="center" justifyContent="space-between" id='iconosMenu'>
                 <Link to="/">
-                    <Image src='assets/img/logo-movie.png' alt='Dan Abramov' w='150px' />
+                    <Image src='../assets/img/logo-movie.png' alt='Dan Abramov' w='150px' />
                 </Link>
                 <Image src='assets/img/hamburger.svg' alt='Dan Abramov' w='35px' id='hamburguesa' onClick={mostrarMenu}/>
             </Box>
             <Box className={abierto ? 'abierto' : 'cerrado'} alignItems="center" direction='row' gap='3' align='center' id='containerButtons'>
                 <Link to="/">
-                    <Button variant='ghost' color='#a9a3d3' _hover={{background: "#52002c", color: "white"}}>
+                    <Button variant='ghost'  fontSize='2xl' color='#a9a3d3' _hover={{background: "#52002c", color: "white"}}>
                         Home
                     </Button></Link>
                 <Link to="/populares">
-                    <Button colorScheme='teal' variant='ghost' color='#a9a3d3' _hover={{background: "#52002c", color: "white"}}>
+                    <Button variant='ghost' fontSize='2xl' color='#a9a3d3' _hover={{background: "#52002c", color: "white"}}>
                         Populares
                     </Button></Link>
                     
                 <Link to="/lanzamientos">
-                    <Button colorScheme='teal' variant='ghost' color='#a9a3d3' _hover={{background: "#52002c", color: "white"}}>
+                    <Button variant='ghost' fontSize='2xl' color='#a9a3d3' _hover={{background: "#52002c", color: "white"}}>
                         Próximos Lanzamientos
                     </Button></Link>
                 <form action="" onSubmit={handleSubmit}>

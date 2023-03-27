@@ -1,15 +1,15 @@
-import { Wrap, WrapItem, Container} from '@chakra-ui/react'
+import { Wrap, WrapItem, Container } from '@chakra-ui/react'
 import { Box, VStack, HStack, IconButton, Text} from '@chakra-ui/react'
 import {ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
 import {  useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
-import { Navbar } from "./Navbar"
-import { Footer } from "./Footer"
 import { CardMovie } from "./CardMovie"
+import { Loading } from './Loading'
 
 const useCount = () => {
     const [count, setCount] = useState(1)
     const [page, setPage] =useState()
+  
 
     const handleClickNext = () => {    
         if (count < page) {
@@ -34,20 +34,22 @@ export const SearchMovie = () => {
     const params = useParams()
     const [movies, setMovies] = useState([])
     const { count, setPage, handleClickNext, handleClickPrev} = useCount()
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(()=>{
+        setIsLoading(true)
         fetch(`https://api.themoviedb.org/3/search/movie?api_key=7c1a3b7f576f57154e113773e6308ceb&query=${params.query}&page=${count}`)
         .then(res=> res.json())
         .then(data => { 
             setMovies(data.results)
             setPage(data.total_pages)
+            setIsLoading(false)
         })
     }, [params.query, count, setPage])
 
     return(
         <div >
-            <Navbar />
-            
+           {isLoading && <Loading />}
             <Container maxW='80%' py='50px'>
             <Wrap spacing='30px' mt='5'>
                 {movies?.map(movie =>(
@@ -84,7 +86,6 @@ export const SearchMovie = () => {
                     </Container>
                     </VStack>
                 </Box>
-            <Footer />
         </div>
     )
 }
