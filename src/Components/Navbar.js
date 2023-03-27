@@ -35,7 +35,7 @@ export const Navbar = () => {
                 <Link to="/">
                     <Image src='../assets/img/logo-movie.png' alt='Dan Abramov' w='150px' />
                 </Link>
-                <Image src='assets/img/hamburger.svg' alt='Dan Abramov' w='35px' id='hamburguesa' onClick={mostrarMenu}/>
+                <Image src='../assets/img/hamburger.svg' alt='Dan Abramov' w='35px' id='hamburguesa' onClick={mostrarMenu}/>
             </Box>
             <Box className={abierto ? 'abierto' : 'cerrado'} alignItems="center" direction='row' gap='3' align='center' id='containerButtons'>
                 <Link to="/">

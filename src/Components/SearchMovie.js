@@ -64,20 +64,20 @@ export const SearchMovie = () => {
             </Wrap>
             </Container>
              
-            <Box bg='lightblue' w='100%' p={4}> 
+            <Box bg='#030015' w='100%' p={4}> 
                     <VStack>
                     <Container centerContent={true}>
                     <HStack>
                     <IconButton
-                        colorScheme='teal'
+                        _hover={{background: "#52002c", color: "white"}}
                         icon={<ArrowLeftIcon />}
                         onClick={handleClickPrev}
                         />
-                    <Text fontSize='md' fontWeight='bold'>
+                    <Text fontSize='md' fontWeight='bold' color='white'>
                         {count}
                     </Text>
                     <IconButton
-                        colorScheme='teal'
+                        _hover={{background: "#52002c", color: "white"}}
                         icon={<ArrowRightIcon />}
                         onClick={handleClickNext}
 
