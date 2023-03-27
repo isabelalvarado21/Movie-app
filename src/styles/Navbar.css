@@ -1,6 +1,59 @@
 #navbar{
     display: flex;
     justify-content: space-between;
-    /* gap:20px  */
+}
 
+#hamburguesa {
+    display:none;
+}
+
+.cerrado {
+    display: flex;
+}
+
+@media(max-width:1024px){
+    #iconosMenu{
+        width:100%;
+    }
+
+    #navbar{
+        position: relative;
+    }
+
+    #hamburguesa {
+            display: block;
+            cursor: pointer;
+            filter: brightness(0) saturate(100%) invert(100%) sepia(70%) saturate(1%) hue-rotate(59deg) brightness(109%) contrast(101%);
+        }
+
+    #navbar, #containerButtons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #containerButtons {
+        width: 100%;
+        margin-top: 50px;
+        gap: 20px;
+    }
+
+    #containerButtons a, #containerButtons a button{
+        width: 100%;
+        margin-left:0;
+    }
+
+    .abierto{
+        display: flex;
+        position: absolute;
+        bottom: -245px;
+        background-color: #030015;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        padding-bottom: 30px;
+    }
+
+    .cerrado{
+        display:none;
+    }
 }
