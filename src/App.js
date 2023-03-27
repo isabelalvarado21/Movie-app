@@ -7,11 +7,15 @@ import { UpcomingMovies } from './Components/UpcomingMovies';
 import { SearchMovie } from './Components/SearchMovie';
 import { DetailMovie } from './Components/DetailMovie';
 import { Error } from './Components/Error';
+import { Footer } from './Components/Footer';
+import { Navbar } from './Components/Navbar';
 
 export const App = () => {
   return (
+    <div className="body">
     <ChakraProvider>
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/populares" element={<PopularMovies title="Populares" url="popular"/>}/>
@@ -21,7 +25,9 @@ export const App = () => {
           <Route path="*" element={<Error />}/>
         </Routes>
       </BrowserRouter>
+      <Footer />
     </ChakraProvider>
+    </div>
   );
 }
 

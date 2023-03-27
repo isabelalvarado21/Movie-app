@@ -1,8 +1,6 @@
 import { useParams } from "react-router-dom"
 import { Card, Image, Container, Text, HStack, Stack, CardBody, Heading, CardFooter, Button, Link, Flex } from '@chakra-ui/react'
 import { useState,useEffect } from "react"
-import { Navbar } from "./Navbar"
-import { Footer } from "./Footer"
 
 export const DetailMovie = () => {
 
@@ -27,7 +25,6 @@ export const DetailMovie = () => {
 
     return(
         <>
-        <Navbar /> 
         <Container maxW='80%' py='70px' bgImage={url} bgRepeat='no-repeat' bgSize="cover"  >
             <Flex align="center" justify="center" >
             <Card 
@@ -78,7 +75,6 @@ export const DetailMovie = () => {
                 </Card>
                 </Flex>
         </Container>
-        <Footer />
         </>
     )
    
