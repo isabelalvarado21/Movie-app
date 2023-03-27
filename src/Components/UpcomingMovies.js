@@ -1,9 +1,8 @@
 import { Box, VStack, HStack, Container, IconButton, Text, Wrap, WrapItem} from '@chakra-ui/react'
 import {ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
 import { useState, useEffect} from "react"
-import { Navbar } from "./Navbar"
-import { Footer } from "./Footer"
 import { CardMovie } from "./CardMovie"
+import { Loading } from './Loading'
 
  const useCount = () => {
     const [count, setCount] = useState(1)
@@ -31,21 +30,23 @@ export const UpcomingMovies = ({title, url }) => {
   
         const [movies, setMovies] = useState()
         const { count, setPage, handleClickNext, handleClickPrev} = useCount()
+        const [isLoading, setIsLoading] = useState(false)
 
         useEffect(()=> {
+            setIsLoading(true)
             fetch(`https://api.themoviedb.org/3/movie/${url}?api_key=7c1a3b7f576f57154e113773e6308ceb&page=${count}`)
             .then(res => res.json())
             .then(data =>{
                 setMovies(data.results)
-                setPage(data.total_pages) })
+                setPage(data.total_pages)
+                setIsLoading(false) })
         }, [count, setPage, url])
        
  
         return(
 
             <div>
-            <Navbar />
-                <div>
+                {isLoading && <Loading />}
                 <Container maxW='80%' py='50px'>
                 <Text fontSize='4xl' fontWeight='600' as='h2'>{title}</Text>
                     <Wrap spacing='30px' mt='5'>
@@ -84,8 +85,7 @@ export const UpcomingMovies = ({title, url }) => {
                     </VStack>
                 </Box>
                 
-                </div>
-                <Footer />
+                
             </div>
      )
 } 

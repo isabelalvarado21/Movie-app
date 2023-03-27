@@ -23,7 +23,7 @@ export const Carousel = () => {
         .then(data => 
             setCineMovies(data.results))
         }, [])
-        console.log(cineMovies);
+        // console.log(cineMovies);
 
   return (
     <Flickity
