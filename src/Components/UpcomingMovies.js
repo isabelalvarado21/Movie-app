@@ -1,32 +1,46 @@
 import { Box, VStack, HStack, Container, IconButton, Text, Wrap, WrapItem} from '@chakra-ui/react'
 import {ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
-// import { Link } from "react-router-dom"
-import { useState, useEffect } from "react"
+import { useState, useEffect} from "react"
 import { Navbar } from "./Navbar"
 import { Footer } from "./Footer"
 import { CardMovie } from "./CardMovie"
 
+ const useCount = () => {
+    const [count, setCount] = useState(1)
+    const [page, setPage] =useState()
+
+    const handleClickNext = () => {    
+        if (count < page) {
+        setCount(count + 1)}
+    }
+    const handleClickPrev = () => {
+        if (count > 1) {
+        setCount(count - 1)};
+    }
+   
+  return {
+  count,
+  page, 
+  handleClickNext,
+  handleClickPrev,
+  setPage,
+  }
+}
+
 export const UpcomingMovies = ({title, url }) => {
   
         const [movies, setMovies] = useState()
-        const [count, setCount] = useState(1)
+        const { count, setPage, handleClickNext, handleClickPrev} = useCount()
 
-        useEffect(()=>{
+        useEffect(()=> {
             fetch(`https://api.themoviedb.org/3/movie/${url}?api_key=7c1a3b7f576f57154e113773e6308ceb&page=${count}`)
             .then(res => res.json())
-            .then(data => 
-                setMovies(data.results))
-        }, [url, count])
-
-        const handleClickNext = () => {
-            setCount(count + 1);
-        };
-        
-        const handleClickPrev = () => {
-            if (count >1) {
-                setCount(count - 1)};
-        }
+            .then(data =>{
+                setMovies(data.results)
+                setPage(data.total_pages) })
+        }, [count, setPage, url])
        
+ 
         return(
 
             <div>
@@ -36,7 +50,7 @@ export const UpcomingMovies = ({title, url }) => {
                 <Text fontSize='4xl' fontWeight='600' as='h2'>{title}</Text>
                     <Wrap spacing='30px' mt='5'>
                         {movies?.map(movie =>(
-                            <WrapItem>
+                            <WrapItem key={`key-${movie.id}`}>
                                 <CardMovie 
                                 id={movie.id}
                                 title={movie.title}
@@ -63,6 +77,7 @@ export const UpcomingMovies = ({title, url }) => {
                         colorScheme='teal'
                         icon={<ArrowRightIcon />}
                         onClick={handleClickNext}
+
                         /> 
                     </HStack>
                     </Container>
@@ -73,4 +88,4 @@ export const UpcomingMovies = ({title, url }) => {
                 <Footer />
             </div>
      )
-}
+} 
