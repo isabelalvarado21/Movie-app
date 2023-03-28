@@ -1,4 +1,4 @@
-import { Wrap, WrapItem, Container, Text} from '@chakra-ui/react'
+import { Wrap, WrapItem, Container, Text } from '@chakra-ui/react'
 import { useState, useEffect} from "react"
 import { CardMovie } from "./CardMovie"
 import { Loading } from './Loading'
@@ -22,7 +22,6 @@ export const MoviesHome = ({ title, url }) => {
         {isLoading && <Loading />}
         <Container maxW='90%' py='50px' >
             <Text fontSize='4xl' fontWeight='500' as='h2' color='#a9a3d3'>{title}</Text>
-     
             <Wrap spacing='3%' mt='5'>
                 {movies?.map(movie =>(
                     <WrapItem key={`key-${movie.id}`}>

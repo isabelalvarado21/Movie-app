@@ -1,30 +1,23 @@
-import { Box, Container, VStack, HStack, IconButton } from '@chakra-ui/react'
-import { EmailIcon, InfoIcon } from '@chakra-ui/icons'
+import { Container, VStack,IconButton, Text, Link } from '@chakra-ui/react'
+import { ExternalLinkIcon } from '@chakra-ui/icons'
 
 export const Footer = () => {
     
+    const link = `https://github.com/isabelalvarado21/Movie-app`
+    
     return(
         <>
-        <Box bg='#030015' w='100%' p={10}>
-            <VStack>
-                <Container centerContent={true} color='#a9a3d3'>
-                    2023. Movie App, todos los derechos reservados.
-                </Container>
-
-                <Container centerContent={true}>
-                    <HStack>
-                        <IconButton
-                        _hover={{background: "#52002c", color: "white"}}
-                        icon={<EmailIcon  />}
-                        />
-                        <IconButton
-                        _hover={{background: "#52002c", color: "white"}}
-                        icon={<InfoIcon  />}
-                        />
-                    </HStack>
-                </Container>    
-            </VStack>            
-        </Box>
+        <VStack>
+            <Container bg='#030015' w='100%' p={12} centerContent >
+                <Text color='#a9a3d3' >2023. Movie App.</Text>
+                <Text color='#a9a3d3' p='3'>Hecho por Julieta e Isabel.</Text>
+            <Link href={link}>
+                <IconButton 
+                    _hover={{background: "#52002c", color: "white"}}
+                    icon={<ExternalLinkIcon  />}/>
+            </Link>                   
+            </Container>
+        </VStack>
         </>
     )
 }
