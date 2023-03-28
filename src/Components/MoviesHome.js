@@ -1,4 +1,4 @@
-import { Wrap, WrapItem, Container, Text} from '@chakra-ui/react'
+import { Box, Grid, Container, Text } from '@chakra-ui/react'
 import { useState, useEffect} from "react"
 import { CardMovie } from "./CardMovie"
 import { Loading } from './Loading'
@@ -21,20 +21,18 @@ export const MoviesHome = ({ title, url }) => {
         <>
         {isLoading && <Loading />}
         <Container maxW='90%' py='50px' >
-            <Text fontSize='4xl' fontWeight='500' as='h2' color='#a9a3d3'>{title}</Text>
-     
-            <Wrap spacing='3%' mt='5'>
+            <Text fontSize='4xl' fontWeight='500' as='h2' color='#a9a3d3' display='inline-block' bgColor='#160b3e9e' px='10' pt='10' borderTopRadius='30px'>{title}</Text>
+            <Grid templateColumns={{sm: "repeat(1, 1fr)",  md: "repeat(2, 1fr)",  lg: "repeat(4, 1fr)",  xl: "repeat(5, 1fr)"}} gap={6} bgColor='#160b3e9e' p='10' borderTopRightRadius='30px' borderBottomRadius='30px'>
                 {movies?.map(movie =>(
-                    <WrapItem key={`key-${movie.id}`}>
+                    <Box key={`key-${movie.id}`} w='100%' display='flex' justifyContent='center'>
                         <CardMovie 
                         id={movie.id}
                         title={movie.title}
                         poster_path={movie.poster_path}
                         />
-                    </WrapItem>
+                    </Box>
                 ))}
-            </Wrap>
-           
+           </Grid>
         </Container>
         </>
     )

@@ -1,4 +1,4 @@
-import { Box, VStack, HStack, Container, IconButton, Text, Wrap, WrapItem, Spinner} from '@chakra-ui/react'
+import { Box, VStack, HStack, Container, IconButton, Text, Wrap, WrapItem} from '@chakra-ui/react'
 import {ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
 import { useState, useEffect } from "react"
 import { CardMovie } from "./CardMovie"
@@ -46,7 +46,7 @@ export const PopularMovies = ({title, url }) => {
             <div>
                     {isLoading && <Loading />}
                     <Container maxW='80%' py='50px'>
-                    <Text fontSize='4xl' fontWeight='600' as='h2'>{title}</Text>
+                    <Text fontSize='4xl' fontWeight='600' as='h2' color='#a9a3d3'>{title}</Text>
                         <Wrap spacing='30px' mt='5'>
                             {movies?.map(movie =>(
                                 <WrapItem key={`key-${movie.id}`}>
@@ -60,20 +60,20 @@ export const PopularMovies = ({title, url }) => {
                         </Wrap>
                     </Container>
               
-              <Box bg='lightblue' w='100%' p={4}> 
+              <Box bg='#030015' w='100%' p={4}> 
                     <VStack>
                     <Container centerContent={true}>
                     <HStack>
                     <IconButton
-                        colorScheme='teal'
+                        _hover={{background: "#52002c", color: "white"}}
                         icon={<ArrowLeftIcon />}
                         onClick={handleClickPrev}
                         />
-                    <Text fontSize='md' fontWeight='bold'>
+                    <Text fontSize='md' fontWeight='bold' color='white'>
                         {count}
                     </Text>
                     <IconButton
-                        colorScheme='teal'
+                        _hover={{background: "#52002c", color: "white"}}
                         icon={<ArrowRightIcon />}
                         onClick={handleClickNext}
                         /> 
