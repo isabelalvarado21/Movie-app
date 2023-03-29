@@ -1,5 +1,4 @@
-import { Wrap, WrapItem, Container } from '@chakra-ui/react'
-import { Box, VStack, HStack, IconButton, Text} from '@chakra-ui/react'
+import { Box, Grid, Container, VStack, HStack, IconButton, Text} from '@chakra-ui/react'
 import {ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
 import {  useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
@@ -50,18 +49,18 @@ export const SearchMovie = () => {
     return(
         <div >
            {isLoading && <Loading />}
-            <Container maxW='80%' py='50px'>
-            <Wrap spacing='30px' mt='5'>
+            <Container maxW='90%' py='50px'>
+            <Grid templateColumns={{sm: "repeat(1, 1fr)",  md: "repeat(2, 1fr)",  lg: "repeat(3, 1fr)",  xl:"repeat(5, 1fr)"}} gap={6} bgColor='#160b3e9e' p='10' borderRadius={{md:'30px'}} >
                 {movies?.map(movie =>(
-                    <WrapItem key={`key-${movie.id}`}>
+                    <Box display='flex' justifyContent='center' key={`key-${movie.id}`}>
                         <CardMovie 
                         id={movie.id}
                         title={movie.title}
                         poster_path={movie.poster_path}
                         />
-                    </WrapItem>
+                    </Box>
                 ))}
-            </Wrap>
+            </Grid>
             </Container>
              
             <Box bg='#030015' w='100%' p={4}> 
