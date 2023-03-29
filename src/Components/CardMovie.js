@@ -1,6 +1,7 @@
-import { Card, Image, Link, Heading, CardBody, CardFooter, Button} from '@chakra-ui/react'
+import { Card, Image, Link, Heading, CardBody, CardFooter, Button } from '@chakra-ui/react'
 
 export const CardMovie = ({id, title, poster_path}) => {
+    
     return (
         <Card maxW='sm' key={`key-${id}`} w='200px' h='410px' boxShadow='md' borderTopRadius='5px' overflow='hidden' _hover={{ boxShadow:"outline" }}>
             <CardBody p='0'>
@@ -18,7 +19,6 @@ export const CardMovie = ({id, title, poster_path}) => {
                 </Link>
             </CardFooter>
         </Card>
-   
         
     )
 }

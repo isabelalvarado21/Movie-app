@@ -1,5 +1,5 @@
 import { Box, Grid, VStack, HStack, Container, IconButton, Text} from '@chakra-ui/react'
-import {ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
+import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
 import { useState, useEffect } from "react"
 import { CardMovie } from "./CardMovie"
 import { Loading } from './Loading'
@@ -34,17 +34,17 @@ export const PopularMovies = ({title, url }) => {
         useEffect(()=>{
             setIsLoading(true)
             fetch(`https://api.themoviedb.org/3/movie/${url}?api_key=7c1a3b7f576f57154e113773e6308ceb&page=${count}`)
-            .then(res => res.json())
-            .then(data =>{
-                setMovies(data.results)
-                setPage(data.total_pages) 
-                setIsLoading(false)
-            })
+                .then(res => res.json())
+                .then(data =>{
+                    setMovies(data.results)
+                    setPage(data.total_pages) 
+                    setIsLoading(false)
+                })
         }, [count, setPage, url])
        
         return(
             <>
-                    {isLoading && <Loading />}
+                {isLoading && <Loading />}
                 <Container maxW='90%' py='50px'>
                     <Text fontSize={{base: "24px", md: "30px", lg: "35px"}} display={{sm:'block', md:'inline-block'}} textAlign={{sm:'center'}} fontWeight='500' as='h2' color='#a9a3d3' bgColor='#160b3e9e' px='10' pt='10' borderTopRadius='30px'>{title}</Text>
                         <Grid templateColumns={{sm: "repeat(1, 1fr)",  md: "repeat(2, 1fr)",  lg: "repeat(3, 1fr)",  xl:"repeat(5, 1fr)"}} gap={6} bgColor='#160b3e9e' p='10' borderTopRightRadius={{md:'30px'}} borderBottomRadius='30px'>
@@ -58,7 +58,7 @@ export const PopularMovies = ({title, url }) => {
                                 </Box>
                             ))}
                         </Grid>
-                    </Container>
+                </Container>
               
                 <Box bg='#030015' w='100%' p={4}> 
                     <VStack>
@@ -69,9 +69,7 @@ export const PopularMovies = ({title, url }) => {
                                     icon={<ArrowLeftIcon />}
                                     onClick={handleClickPrev}
                                     />
-                                <Text fontSize='md' fontWeight='bold' color='white'>
-                                    {count}
-                                </Text>
+                                <Text fontSize='md' fontWeight='bold' color='white'>{count}</Text>
                                 <IconButton
                                     _hover={{background: "#52002c", color: "white"}}
                                     icon={<ArrowRightIcon />}
@@ -81,8 +79,6 @@ export const PopularMovies = ({title, url }) => {
                         </Container>
                     </VStack>
                 </Box>
-            
-             
             </>
-     )
+    )
 }

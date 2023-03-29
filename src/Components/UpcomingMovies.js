@@ -1,5 +1,5 @@
-import { Box, VStack, HStack, Container, IconButton, Text, Grid} from '@chakra-ui/react'
-import {ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
+import { Box, VStack, HStack, Container, IconButton, Text, Grid } from '@chakra-ui/react'
+import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
 import { useState, useEffect} from "react"
 import { CardMovie } from "./CardMovie"
 import { Loading } from './Loading'
@@ -35,14 +35,13 @@ export const UpcomingMovies = ({title, url }) => {
         useEffect(()=> {
             setIsLoading(true)
             fetch(`https://api.themoviedb.org/3/movie/${url}?api_key=7c1a3b7f576f57154e113773e6308ceb&page=${count}`)
-            .then(res => res.json())
-            .then(data =>{
-                setMovies(data.results)
-                setPage(data.total_pages)
-                setIsLoading(false) })
+                .then(res => res.json())
+                .then(data =>{
+                    setMovies(data.results)
+                    setPage(data.total_pages)
+                    setIsLoading(false) })
         }, [count, setPage, url])
        
- 
         return(
 
             <>
@@ -64,28 +63,23 @@ export const UpcomingMovies = ({title, url }) => {
               
                 <Box bg='#030015' w='100%' p={4}> 
                     <VStack>
-                    <Container centerContent={true}>
-                    <HStack>
-                    <IconButton
-                        _hover={{background: "#52002c", color: "white"}}
-                        icon={<ArrowLeftIcon />}
-                        onClick={handleClickPrev}
-                        />
-                    <Text fontSize='md' fontWeight='bold' color='white'>
-                        {count}
-                    </Text>
-                    <IconButton
-                        _hover={{background: "#52002c", color: "white"}}
-                        icon={<ArrowRightIcon />}
-                        onClick={handleClickNext}
-
-                        /> 
-                    </HStack>
-                    </Container>
+                        <Container centerContent={true}>
+                            <HStack>
+                            <IconButton
+                                _hover={{background: "#52002c", color: "white"}}
+                                icon={<ArrowLeftIcon />}
+                                onClick={handleClickPrev}
+                                />
+                            <Text fontSize='md' fontWeight='bold' color='white'>{count}</Text>
+                            <IconButton
+                                _hover={{background: "#52002c", color: "white"}}
+                                icon={<ArrowRightIcon />}
+                                onClick={handleClickNext}
+                                /> 
+                            </HStack>
+                        </Container>
                     </VStack>
-                </Box>
-                
-                
+                </Box>  
             </>
      )
 } 
