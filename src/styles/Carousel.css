@@ -12,7 +12,6 @@
     background-repeat: no-repeat;
 }
 
-/* cell number */
 .carousel-cell:before {
     display: none;    
 }

@@ -1,8 +1,8 @@
-import {  Container, Spinner } from '@chakra-ui/react'
+import { Container, Spinner } from '@chakra-ui/react'
 
 export const Loading = () => {
-    return ( 
     
+    return( 
     <Container py='50px' centerContent={true}>
         <Spinner
             thickness='6px'
