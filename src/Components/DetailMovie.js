@@ -27,53 +27,51 @@ export const DetailMovie = () => {
         <>
         <Container maxW='80%' py='70px' bgImage={url} bgRepeat='no-repeat' bgSize="cover"  >
             <Flex align="center" justify="center" >
-            <Card 
-                direction={{ base: 'column', sm: 'row' }}
-                overflow='hidden'
-                variant='outline'
-                bg='rgba(0,0,18,0.8)'
-                color='white'
-                w='80%'
+                <Card 
+                    direction={{ base: 'column', sm: 'row' }}
+                    overflow='hidden'
+                    variant='outline'
+                    bg='rgba(0,0,18,0.8)'
+                    color='white'
+                    w='80%'
                 >
-                    <Image 
-                        objectFit='cover'
-                        maxW={{ base: '100%', sm: '200px' }}
-                        src={`https://image.tmdb.org/t/p/w400/${movie.poster_path}`}
-                        alt={movie.title}
-                    />
+                        <Image 
+                            objectFit='cover'
+                            maxW={{ base: '100%', sm: '200px' }}
+                            src={`https://image.tmdb.org/t/p/w400/${movie.poster_path}`}
+                            alt={movie.title}
+                        />
 
-                    <Stack >
-                        <CardBody >
-                            <Heading fontSize='2.2rem' mb='4'>{movie.title}</Heading>
+                        <Stack>
+                            <CardBody>
+                                <Heading fontSize='2.2rem' mb='4'>{movie.title}</Heading>
+                                <Text py='2' fontSize='1.5rem' as='h2'>
+                                    Descripcion: 
+                                </Text>
+                                <Text py='2' fontSize='1rem' as='p'>
+                                    {movie.overview}
+                                </Text>
+                                <Text py='2' fontSize='1.5rem' as='h2'>
+                                    Categorias: 
+                                </Text>
+                                <HStack spacing='24px'>
+                                    {movie?.genres?.map((genre, index) => (
+                                        <Text key={index} py='2' px='3' as='span' display='inline-block' fontSize='1rem' bg='rgba(0,0,86,0.68)'>{genre.name}</Text>
+                                    ))}
+                                </HStack>
+                            </CardBody>
 
-                            <Text py='2' fontSize='1.5rem' as='h2'>
-                                Descripcion: 
-                            </Text>
-                            <Text py='2' fontSize='1rem' as='p'>
-                                {movie.overview}
-                            </Text>
-                            <Text py='2' fontSize='1.5rem' as='h2'>
-                                Categorias: 
-                            </Text>
-                            <HStack spacing='24px'>
-                                {movie?.genres?.map((genre) => (
-                                    <Text py='2' px='3' as='span' display='inline-block' fontSize='1rem' bg='rgba(0,0,86,0.68)'>{genre.name}</Text>
-                                ))}
-                            </HStack>
-                        </CardBody>
-
-                        <CardFooter key={`key-${movie.id}`}>
-                            <Link href={link} w='100%' bg='red'>
-                                <Button variant='solid' w='100%' bg='#000012' border='none' borderRadius='none'   _hover={{
-        background: "rgba(0,0,65,0.68)", color: "white",
-        }}>
-                                    Trailer
-                                </Button>
-                            </Link>
-                        </CardFooter>
-                    </Stack>
+                            <CardFooter >
+                                <Link href={link} w='100%' bg='red'>
+                                    <Button variant='solid' w='100%' bg='#000012' border='none' borderRadius='none'   _hover={{ background: "rgba(0,0,65,0.68)", color: "white",
+                                    }}>
+                                        Trailer
+                                    </Button>
+                                </Link>
+                            </CardFooter>
+                        </Stack>
                 </Card>
-                </Flex>
+            </Flex>
         </Container>
         </>
     )

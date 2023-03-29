@@ -11,7 +11,7 @@ export const Footer = () => {
                 <HStack>
                     <Text color='#a9a3d3' >© Movie App - 2023 - Hecho con ❤ por Julieta e Isabel</Text>
                     <Link href={link}>
-                        <IconButton ms='5' _hover={{background: "#52002c", color: "white"}} icon={<ExternalLinkIcon  />}/>
+                        <IconButton ms='5' size='sm' _hover={{background: "#52002c", color: "white"}} icon={<ExternalLinkIcon  boxSize='5' />}/>
                     </Link>                   
                 </HStack>
             </Container>
