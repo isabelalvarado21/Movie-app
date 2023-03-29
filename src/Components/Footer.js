@@ -1,4 +1,4 @@
-import { Container, HStack,IconButton, Text, Link } from '@chakra-ui/react'
+import { Container, HStack, IconButton, Text, Link } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 
 export const Footer = () => {

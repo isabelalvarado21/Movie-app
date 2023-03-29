@@ -10,14 +10,14 @@ export const DetailMovie = () => {
     
     useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/${params.id}?api_key=7c1a3b7f576f57154e113773e6308ceb`)
-        .then(res => res.json())
-        .then(data => setMovie(data))
+            .then(res => res.json())
+            .then(data => setMovie(data))
     }, [params.id])
 
     useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/${params.id}/videos?api_key=7c1a3b7f576f57154e113773e6308ceb`)
-        .then(res => res.json())
-        .then(data => setTrailer(data.results[0]))
+            .then(res => res.json())
+            .then(data => setTrailer(data.results[0]))
     }, [params.id])
 
     const url = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`
@@ -34,7 +34,7 @@ export const DetailMovie = () => {
                     bg='rgba(0,0,18,0.8)'
                     color='white'
                     w='80%'
-                >
+                    >
                         <Image 
                             objectFit='cover'
                             maxW={{ base: '100%', sm: '200px' }}

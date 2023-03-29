@@ -6,8 +6,8 @@ Este proyecto fue desarrollado durante el último módulo de React, es una aplic
 
 **DISEÑO DESKTOP Y MOBILE**    
 
-![proyecto](./Movie-app/public/assets/img/dise%C3%B1oDesktop.PNG)    
-![proyecto](./Movie-app/public/assets/img/dise%C3%B1oMobile.PNG)    
+![proyecto](./public/assets/img/disenioDesktop.PNG)  
+![proyecto](./public/assets/img/disenioMobile.PNG)
 
 
 Utilizamos:
@@ -30,6 +30,7 @@ Todas las películas próximas a estrenar.
 **DETALLE**    
 Cada card tiene un botón de 'ver detalles' donde te dirección al detalle de cada película con toda la información (título, géneros, tráiler y descripción).    
 
+Deploy : https://movie-app-five-delta.vercel.app/    
 
 *Para ejecutarlo, hay que clonar este repositorio y en la consola ejecutar:*
 
