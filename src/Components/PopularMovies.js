@@ -1,4 +1,4 @@
-import { Box, VStack, HStack, Container, IconButton, Text, Wrap, WrapItem} from '@chakra-ui/react'
+import { Box, Grid, VStack, HStack, Container, IconButton, Text} from '@chakra-ui/react'
 import {ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
 import { useState, useEffect } from "react"
 import { CardMovie } from "./CardMovie"
@@ -43,46 +43,46 @@ export const PopularMovies = ({title, url }) => {
         }, [count, setPage, url])
        
         return(
-            <div>
+            <>
                     {isLoading && <Loading />}
-                    <Container maxW='80%' py='50px'>
-                    <Text fontSize='4xl' fontWeight='600' as='h2' color='#a9a3d3'>{title}</Text>
-                        <Wrap spacing='30px' mt='5'>
+                <Container maxW='90%' py='50px'>
+                    <Text fontSize={{base: "24px", md: "30px", lg: "35px"}} display={{sm:'block', md:'inline-block'}} textAlign={{sm:'center'}} fontWeight='500' as='h2' color='#a9a3d3' bgColor='#160b3e9e' px='10' pt='10' borderTopRadius='30px'>{title}</Text>
+                        <Grid templateColumns={{sm: "repeat(1, 1fr)",  md: "repeat(2, 1fr)",  lg: "repeat(3, 1fr)",  xl:"repeat(5, 1fr)"}} gap={6} bgColor='#160b3e9e' p='10' borderTopRightRadius={{md:'30px'}} borderBottomRadius='30px'>
                             {movies?.map(movie =>(
-                                <WrapItem key={`key-${movie.id}`}>
+                                <Box display='flex' justifyContent='center' key={`key-${movie.id}`}>
                                     <CardMovie 
                                     id={movie.id}
                                     title={movie.title}
                                     poster_path={movie.poster_path}
                                     />
-                                </WrapItem>
+                                </Box>
                             ))}
-                        </Wrap>
+                        </Grid>
                     </Container>
               
-              <Box bg='#030015' w='100%' p={4}> 
+                <Box bg='#030015' w='100%' p={4}> 
                     <VStack>
-                    <Container centerContent={true}>
-                    <HStack>
-                    <IconButton
-                        _hover={{background: "#52002c", color: "white"}}
-                        icon={<ArrowLeftIcon />}
-                        onClick={handleClickPrev}
-                        />
-                    <Text fontSize='md' fontWeight='bold' color='white'>
-                        {count}
-                    </Text>
-                    <IconButton
-                        _hover={{background: "#52002c", color: "white"}}
-                        icon={<ArrowRightIcon />}
-                        onClick={handleClickNext}
-                        /> 
-                    </HStack>
-                    </Container>
+                        <Container centerContent={true}>
+                            <HStack>
+                                <IconButton
+                                    _hover={{background: "#52002c", color: "white"}}
+                                    icon={<ArrowLeftIcon />}
+                                    onClick={handleClickPrev}
+                                    />
+                                <Text fontSize='md' fontWeight='bold' color='white'>
+                                    {count}
+                                </Text>
+                                <IconButton
+                                    _hover={{background: "#52002c", color: "white"}}
+                                    icon={<ArrowRightIcon />}
+                                    onClick={handleClickNext}
+                                    /> 
+                            </HStack>
+                        </Container>
                     </VStack>
                 </Box>
             
              
-            </div>
+            </>
      )
 }

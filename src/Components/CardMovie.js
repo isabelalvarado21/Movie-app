@@ -2,7 +2,7 @@ import { Card, Image, Link, Heading, CardBody, CardFooter, Button} from '@chakra
 
 export const CardMovie = ({id, title, poster_path}) => {
     return (
-        <Card maxW='sm' key={`key-${id}`} w='200px' h='400px' boxShadow='md' borderTopRadius='5px' overflow='hidden' _hover={{ boxShadow:"outline" }}>
+        <Card maxW='sm' key={`key-${id}`} w='200px' h='410px' boxShadow='md' borderTopRadius='5px' overflow='hidden' _hover={{ boxShadow:"outline" }}>
             <CardBody p='0'>
                 <Image
                     src={`https://image.tmdb.org/t/p/original/${poster_path}`}
