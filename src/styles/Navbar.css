@@ -11,7 +11,6 @@
     display: flex;
 }
 
-
 @media(max-width:1072px){
     #iconosMenu{
         width:100%;
@@ -56,5 +55,17 @@
 
     .cerrado{
         display:none;
+    }
+}
+
+@media(max-width:400px) {
+    .abierto {
+        bottom: -309px;
+        padding-top: 20px;
+    }
+
+    #btnBuscar {
+        margin-top:10px;
+        margin-left: 0;
     }
 }
