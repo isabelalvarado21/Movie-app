@@ -50,7 +50,7 @@ export const Navbar = () => {
                 </Link>
                 <form action="" onSubmit={handleSubmit}>
                     <Input onChange={handleChange} color='#030015' _focusVisible={{color: "#030015"}} _placeholder={{color: "#030015"}} width='auto' variant='filled' placeholder='ej. Batman' />
-                    <Input type='submit' onChange={handleChange} width='auto' color='#a9a3d3' fontWeight='bold' ms='4' _hover={{background: "#ffffff", color: "#030015", fontWeight: 'bold'}}/>
+                    <Input type='submit' onChange={handleChange} id="btnBuscar" width='auto' color='#a9a3d3' fontWeight='bold' ms='4' _hover={{background: "#ffffff", color: "#030015", fontWeight: 'bold'}}/>
                 </form>
             </Box>
         </Box>

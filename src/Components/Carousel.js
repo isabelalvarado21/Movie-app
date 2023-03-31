@@ -33,8 +33,8 @@ export const Carousel = () => {
     >
         {cineMovies?.slice(0,7).map(movie => (
           <Link href={`/detalle/${movie.id}`} w='100%' bg='red' key={movie.id}>
-              <Box className='carousel-cell'  h='700px' bgImage={`"https://image.tmdb.org/t/p/original/${movie.backdrop_path}"`} bgRepeat='no-repeat'>
-              <Box w='100%' pt='10' pb='20' className="info">
+              <Box className='carousel-cell' bgImage={`"https://image.tmdb.org/t/p/original/${movie.backdrop_path}"`} bgRepeat='no-repeat'>
+              <Box w='100%' pt='10' px-10 pb='20' className="info">
                 <h1 fontSize='4xl'>{movie.title}</h1>
                 <p>{movie.overview}</p>
               </Box>

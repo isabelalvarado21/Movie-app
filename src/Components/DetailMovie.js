@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { Card, Image, Container, Text, HStack, Stack, CardBody, Heading, CardFooter, Button, Link, Flex } from '@chakra-ui/react'
+import { Card, Image, Container, Text, Stack, CardBody, Heading, CardFooter, Button, Link, Flex } from '@chakra-ui/react'
 import { useState,useEffect } from "react"
 
 export const DetailMovie = () => {
@@ -25,19 +25,19 @@ export const DetailMovie = () => {
 
     return(
         <>
-        <Container maxW='80%' py='70px' bgImage={url} bgRepeat='no-repeat' bgSize="cover"  >
+        <Container maxW='100%' minH='80vh' py='70px' bgImage={url} bgRepeat='no-repeat' bgSize="cover"  >
             <Flex align="center" justify="center" >
                 <Card 
-                    direction={{ base: 'column', sm: 'row' }}
+                    direction={{ base: 'column', sm: 'column', md: 'row' }}
                     overflow='hidden'
                     variant='outline'
-                    bg='rgba(0,0,18,0.8)'
+                    bg='rgba(0,0,18,0.7)'
                     color='white'
                     w='80%'
                     >
                         <Image 
                             objectFit='cover'
-                            maxW={{ base: '100%', sm: '200px' }}
+                            maxW={{ base: '100%', sm: '100%', md: '200px' }}
                             src={`https://image.tmdb.org/t/p/w400/${movie.poster_path}`}
                             alt={movie.title}
                         />
@@ -54,17 +54,16 @@ export const DetailMovie = () => {
                                 <Text py='2' fontSize='1.5rem' as='h2'>
                                     Categorias: 
                                 </Text>
-                                <HStack spacing='24px'>
+                                <Stack gap='5' direction={["column", "row"]}>
                                     {movie?.genres?.map((genre, index) => (
-                                        <Text key={index} py='2' px='3' as='span' display='inline-block' fontSize='1rem' bg='rgba(0,0,86,0.68)'>{genre.name}</Text>
+                                        <Text key={index} textAlign={[ 'center', 'left' ]} py='2' px='3' m='0' as='span' display='inline-block' fontSize='1rem' background="#52002c" borderRadius='3'>{genre.name}</Text>
                                     ))}
-                                </HStack>
+                                </Stack>
                             </CardBody>
 
                             <CardFooter >
-                                <Link href={link} w='100%' bg='red'>
-                                    <Button variant='solid' w='100%' bg='#000012' border='none' borderRadius='none'   _hover={{ background: "rgba(0,0,65,0.68)", color: "white",
-                                    }}>
+                                <Link href={link} w='100%'>
+                                    <Button variant='solid' w='100%' borderRadius='3' bg='#000012' border='none' _hover={{background: "#52002c", color: "white"}}>
                                         Trailer
                                     </Button>
                                 </Link>
