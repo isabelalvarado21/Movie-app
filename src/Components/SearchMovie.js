@@ -77,7 +77,6 @@ export const SearchMovie = () => {
                             _hover={{background: "#52002c", color: "white"}}
                             icon={<ArrowRightIcon />}
                             onClick={handleClickNext}
-
                             /> 
                         </HStack>
                     </Container>

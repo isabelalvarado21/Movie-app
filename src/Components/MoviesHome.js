@@ -20,21 +20,21 @@ export const MoviesHome = ({ title, url }) => {
     return(
         <>
         {isLoading && <Loading />}
-        <Container maxW='90%' py='50px'>
-            <Text fontSize={{base: "24px", md: "30px", lg: "35px"}} fontWeight='500' as='h2' color='#a9a3d3' display={{sm:'block', md:'inline-block'}} textAlign={{sm:'center'}} bgColor='#160b3e9e' px='10' pt='10' borderTopRadius='30px'>{title}</Text>
-            <Grid templateColumns={{sm: "repeat(1, 1fr)",  md: "repeat(2, 1fr)",  lg: "repeat(3, 1fr)",  xl: "repeat(5, 1fr)"}} gap={6} bgColor='#160b3e9e' p='10' borderTopRightRadius={{md:'30px'}} borderBottomRadius='30px'>
-                {movies?.slice(0,10).map(movie => (   
-                   <Box key={`key-${movie.id}`} w='100%' display='flex' justifyContent='center'>
-                        <CardMovie  
-                        id={movie.id}
-                        title={movie.title}
-                        poster_path={movie.poster_path}
-                        />
-                    </Box>
-                ))
-            }
-           </Grid>
-        </Container>
+            <Container maxW='90%' py='50px'>
+                <Text fontSize={{base: "24px", md: "30px", lg: "35px"}} fontWeight='500' as='h2' color='#a9a3d3' display={{sm:'block', md:'inline-block'}} textAlign={{sm:'center'}} bgColor='#160b3e9e' px='10' pt='10' borderTopRadius='30px'>{title}</Text>
+                <Grid templateColumns={{sm: "repeat(1, 1fr)",  md: "repeat(2, 1fr)",  lg: "repeat(3, 1fr)",  xl: "repeat(5, 1fr)"}} gap={6} bgColor='#160b3e9e' p='10' borderTopRightRadius={{md:'30px'}} borderBottomRadius='30px'>
+                    {movies?.slice(0,10).map(movie => (   
+                    <Box key={`key-${movie.id}`} w='100%' display='flex' justifyContent='center'>
+                            <CardMovie  
+                            id={movie.id}
+                            title={movie.title}
+                            poster_path={movie.poster_path}
+                            />
+                        </Box>
+                    ))
+                }
+            </Grid>
+            </Container>
         </>
     )
 }
